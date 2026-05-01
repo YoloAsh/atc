@@ -1,0 +1,82 @@
+<Window x:Class="timer_project.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Timer" Height="500" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ResizeMode="NoResize"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        MouseDoubleClick="Window_MouseDoubleClick"
+        MouseDown="Window_MouseDown"
+        Loaded="Window_Loaded">
+
+    <Window.Template>
+        <ControlTemplate TargetType="Window">
+            <Border Background="{TemplateBinding Background}">
+                <ContentPresenter/>
+            </Border>
+        </ControlTemplate>
+    </Window.Template>
+
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Settings" Click="SettingsMenuItem_Click"/>
+            <MenuItem Header="Smaller" Name="SizeMenuItem" Click="SizeMenuItem_Click"/>
+            <MenuItem Header="Resize Grip" Name="ResizeGripMenuItem" IsCheckable="True" IsChecked="False" Click="ResizeGripMenuItem_Click"/>
+            <MenuItem Header="Bold" Name="BoldMenuItem" IsCheckable="True" IsChecked="False" Click="BoldMenuItem_Click"/>
+            <MenuItem Header="Telegram" Click="TelegramMenuItem_Click"/>
+            <MenuItem Header="Unpin" Name="PinMenuItem" Click="PinMenuItem_Click"/>
+            <MenuItem Header="Close" Click="CloseMenuItem_Click"/>
+        </ContextMenu>
+    </Window.ContextMenu>
+
+    <Grid Background="Transparent" Name="MainGrid">
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowResizeGrip" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowResizeGrip" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.1" BeginTime="0:0:2"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
+        <Viewbox Stretch="Uniform">
+            <Grid Width="1000" Height="500">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20,20,20,80">
+                    <TextBlock Name="TimeTextBlock" 
+                               Text="12:00" 
+                               FontFamily="pack://application:,,,/Fonts/#Digital-7"
+                               FontWeight="Normal"
+                               FontSize="350"
+                               Foreground="White"
+                               TextAlignment="Center"
+                               TextOptions.TextRenderingMode="Aliased"
+                               TextOptions.TextFormattingMode="Display"/>
+                    <ResizeGrip Name="WindowResizeGrip" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,-30,0" Opacity="0" Visibility="Collapsed"/>
+                </Grid>
+                <TextBlock Name="NoteTextBlock" 
+                           Text="" 
+                           FontFamily="Segoe UI"
+                           FontWeight="Normal"
+                           Foreground="White"
+                           FontSize="145"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+                           TextAlignment="Center"
+                           Margin="25,0,25,0"
+                           Visibility="Hidden"/>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Window>

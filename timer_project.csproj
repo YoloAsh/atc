@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    
+    <!-- Publish Settings -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Resolve WPF vs WinForms type ambiguity -->
+    <Using Remove="System.Drawing" />
+    <Using Remove="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\digital-7.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="timer_project.Tests\**" />
+    <EmbeddedResource Remove="timer_project.Tests\**" />
+    <None Remove="timer_project.Tests\**" />
+    <Page Remove="timer_project.Tests\**" />
+  </ItemGroup>
+
+</Project>

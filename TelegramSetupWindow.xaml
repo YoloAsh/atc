@@ -1,0 +1,47 @@
+<Window x:Class="timer_project.TelegramSetupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Telegram Setup" Height="330" Width="300"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#1E1E1E">
+    <Window.Resources>
+        <!-- Override TextBlock to add TextWrapping for this window's multi-line instructions -->
+        <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+    </Window.Resources>
+    
+    <StackPanel Margin="12">
+        <CheckBox Name="chkEnable" Content="Enable Telegram Notifications" Margin="0,0,0,12"/>
+        
+        <TextBlock Text="STEP 1" FontWeight="SemiBold" FontSize="10" Foreground="#888888" Margin="0,0,0,2"/>
+        <TextBlock Margin="0,0,0,8">
+            Open the bot on Telegram:
+            <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" 
+                       NavigateUri="https://t.me/missDiligenceBot"
+                       Foreground="#5B9BD5">
+                @missDiligenceBot
+            </Hyperlink>
+        </TextBlock>
+
+        <TextBlock Text="STEP 2" FontWeight="SemiBold" FontSize="10" Foreground="#888888" Margin="0,0,0,2"/>
+        <TextBlock Text="Send this PIN to the bot:" Margin="0,0,0,4"/>
+        <Border Background="#2D2D2D" BorderBrush="#3F3F3F" BorderThickness="1" CornerRadius="3" Padding="6" Margin="0,0,0,8">
+            <TextBlock Name="txtPin" Text="----" FontFamily="Consolas" FontWeight="Bold" FontSize="20" 
+                       Foreground="#5B9BD5" HorizontalAlignment="Center"/>
+        </Border>
+
+        <TextBlock Text="STEP 3" FontWeight="SemiBold" FontSize="10" Foreground="#888888" Margin="0,0,0,2"/>
+        <TextBlock Text="Click below to detect your Chat ID:" Margin="0,0,0,4"/>
+        <Button Name="btnLink" Content="Link Telegram" Click="btnLink_Click" Margin="0,0,0,6"/>
+        
+        <TextBlock Name="txtStatus" Text="Status: Not Linked" Foreground="#888888" 
+                   HorizontalAlignment="Center" Margin="0,0,0,8"/>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,4,0,0">
+            <Button Name="btnTest" Content="Send Test" Click="btnTest_Click" Width="90" Margin="0,0,10,0"/>
+            <Button Content="Save" Click="btnSave_Click" Width="90"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

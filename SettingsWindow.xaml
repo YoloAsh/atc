@@ -1,0 +1,30 @@
+<Window x:Class="timer_project.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings" Height="240" Width="260"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#1E1E1E">
+
+    <StackPanel Margin="12">
+        <TextBlock Text="MODE" FontWeight="SemiBold" FontSize="10" Foreground="#888888" Margin="0,0,0,6"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,12">
+            <Button Content="Clock" Width="65" Margin="3" Click="ClockBtn_Click"/>
+            <Button Content="Alarm" Width="65" Margin="3" Click="AlarmBtn_Click"/>
+            <Button Content="Timer" Width="65" Margin="3" Click="TimerBtn_Click"/>
+        </StackPanel>
+
+        <TextBlock Text="TIME  (HH : MM : SS)" FontWeight="SemiBold" FontSize="10" Foreground="#888888" Margin="0,0,0,4"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,12">
+            <TextBox Name="txtHH" Width="36" Margin="3" TextAlignment="Center" MaxLength="2" PreviewTextInput="NumberValidationTextBox"/>
+            <TextBlock Text=":" VerticalAlignment="Center" FontWeight="Bold" Foreground="#666666"/>
+            <TextBox Name="txtMM" Width="36" Margin="3" TextAlignment="Center" MaxLength="2" PreviewTextInput="NumberValidationTextBox"/>
+            <TextBlock Text=":" VerticalAlignment="Center" FontWeight="Bold" Foreground="#666666"/>
+            <TextBox Name="txtSS" Width="36" Margin="3" TextAlignment="Center" MaxLength="2" PreviewTextInput="NumberValidationTextBox"/>
+        </StackPanel>
+
+        <TextBlock Text="NOTE" FontWeight="SemiBold" FontSize="10" Foreground="#888888" Margin="0,0,0,4"/>
+        <TextBox Name="txtNote" Height="40" TextWrapping="Wrap" AcceptsReturn="False" 
+                 VerticalScrollBarVisibility="Auto" TextChanged="txtNote_TextChanged"/>
+    </StackPanel>
+</Window>
