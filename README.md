@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4daab19da2066b5974d4125d8022033c281ca9a6
 # ⏰ Chromeless Timer Overlay
 
 A high-performance, minimalist, and "chromeless" WPF timer application designed to stay out of your way while keeping you on track.
@@ -67,7 +70,10 @@ dotnet build -c Release
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+<<<<<<< HEAD
 =======
 # atc
 Alarm Timer Countdown windows Clock
 >>>>>>> 073fde156899f3cd9854f023760cd3497cb2e30f
+=======
+>>>>>>> 4daab19da2066b5974d4125d8022033c281ca9a6
