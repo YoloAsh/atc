@@ -1,4 +1,4 @@
-<Window x:Class="timer_project.SettingsWindow"
+<Window x:Class="atc.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Settings" Height="240" Width="260"

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using Forms = System.Windows.Forms;
 
-namespace timer_project;
+namespace atc;
 
 /// <summary>
 /// Interaction logic for App.xaml

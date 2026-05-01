@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace timer_project
+namespace atc
 {
     public static class TelegramService
     {

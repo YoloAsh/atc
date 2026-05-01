@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Navigation;
 
-namespace timer_project
+namespace atc
 {
     public partial class TelegramSetupWindow : Window
     {

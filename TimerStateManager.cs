@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Threading;
 
-namespace timer_project
+namespace atc
 {
     public enum TimerMode
     {

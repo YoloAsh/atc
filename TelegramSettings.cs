@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text.Json;
 
-namespace timer_project
+namespace atc
 {
     public class TelegramSettings
     {
@@ -11,7 +11,7 @@ namespace timer_project
 
         private static string DirectoryPath => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-            "timer_project");
+            "atc");
 
         private static string FilePath => Path.Combine(DirectoryPath, "telegram_settings.json");
 

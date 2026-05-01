@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 
-namespace timer_project
+namespace atc
 {
     public partial class SettingsWindow : Window
     {

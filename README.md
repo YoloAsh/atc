@@ -32,13 +32,13 @@ A high-performance, minimalist, and "chromeless" WPF timer application designed 
 - [.NET 10 Runtime](https://dotnet.microsoft.com/download)
 
 ### Installation
-1. Download the latest `timer_project.exe` from the [Releases](#) page.
+1. Download the latest `atc.exe` from the [Releases](#) page.
 2. Run the executable. No installation is required.
 
 ### Build from Source
 ```powershell
-git clone https://github.com/username/timer_project.git
-cd timer_project
+git clone https://github.com/username/atc.git
+cd atc
 dotnet build -c Release
 ```
 

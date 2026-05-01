@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace timer_project
+namespace atc
 {
     public static class MemoryOptimizer
     {

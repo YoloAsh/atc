@@ -11,6 +11,7 @@
     <!-- Publish Settings -->
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>false</SelfContained>
+    <ApplicationIcon>Resources\app_icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,11 +24,5 @@
     <Resource Include="Fonts\digital-7.ttf" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="timer_project.Tests\**" />
-    <EmbeddedResource Remove="timer_project.Tests\**" />
-    <None Remove="timer_project.Tests\**" />
-    <Page Remove="timer_project.Tests\**" />
-  </ItemGroup>
 
 </Project>

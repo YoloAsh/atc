@@ -1,4 +1,4 @@
-<Window x:Class="timer_project.TelegramSetupWindow"
+<Window x:Class="atc.TelegramSetupWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Telegram Setup" Height="330" Width="300"
