@@ -142,7 +142,9 @@ namespace atc
         {
             _isZeroState = true;
             TimeUpdated?.Invoke("TIME", NoteText);
-            _blinkTimer.Start();
+            // Instead of blinking, we just signal that zero state is reached
+            // The blinking behavior is now handled in MainWindow.xaml.cs
+            BlinkStateChanged?.Invoke(false); // Signal that we're in zero state (not blinking)
             _ = TelegramService.SendZeroNotificationAsync(NoteText);
         }
 

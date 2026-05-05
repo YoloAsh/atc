@@ -2,6 +2,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace atc
 {
@@ -18,12 +19,26 @@ namespace atc
         private int currentOpacityIndex = 2; // Default 0.5
 
         private readonly TimerStateManager _timerState;
+        private bool _isTimeUp = false;
+        private bool _isColorSwitched = false;
+        private DispatcherTimer _colorTimer;
+
+        // Store the current text color to preserve it across mode changes
+        private Brush _currentTextColor = Brushes.White;
 
         public MainWindow()
         {
             InitializeComponent();
             _timerState = new TimerStateManager();
             this.Opacity = opacities[currentOpacityIndex];
+
+            // Initialize color timer for when time is up
+            _colorTimer = new DispatcherTimer();
+            _colorTimer.Interval = TimeSpan.FromSeconds(1);
+            _colorTimer.Tick += ColorTimer_Tick;
+
+            // Set initial background to transparent/black to hide it by default
+            MainGrid.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)); // Transparent background
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -62,8 +77,45 @@ namespace atc
 
         private void OnBlinkStateChanged(bool isVisible)
         {
-            TimeTextBlock.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
-            NoteTextBlock.Visibility = (isVisible && !string.IsNullOrWhiteSpace(NoteTextBlock.Text)) ? Visibility.Visible : Visibility.Hidden;
+            // When time is not zero, reset to normal state
+            if (isVisible)
+            {
+                _isTimeUp = false;
+                _isColorSwitched = false;
+                TimeTextBlock.Foreground = _currentTextColor;
+                NoteTextBlock.Foreground = _currentTextColor;
+                MainGrid.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0)); // Transparent background
+                _colorTimer.Stop();
+            }
+            else
+            {
+                // When time reaches zero, start color switching
+                _isTimeUp = true;
+                _isColorSwitched = false;
+                MainGrid.Background = new SolidColorBrush(Color.FromRgb(0, 0, 0)); // Black background to make it visible
+                _colorTimer.Start();
+            }
+        }
+
+        private void ColorTimer_Tick(object sender, EventArgs e)
+        {
+            if (!_isTimeUp) return;
+
+            _isColorSwitched = !_isColorSwitched;
+
+            // Switch text color between white and black (but preserve the original color)
+            TimeTextBlock.Foreground = _isColorSwitched ? Brushes.Black : _currentTextColor;
+            NoteTextBlock.Foreground = _isColorSwitched ? Brushes.Black : _currentTextColor;
+
+            // Switch background rectangle color (this is handled by the grid background)
+            if (_isColorSwitched)
+            {
+                MainGrid.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255)); // White background
+            }
+            else
+            {
+                MainGrid.Background = new SolidColorBrush(Color.FromRgb(0, 0, 0)); // Black background
+            }
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -78,6 +130,7 @@ namespace atc
                 currentColorIndex = (currentColorIndex + 1) % colors.Length;
                 TimeTextBlock.Foreground = colors[currentColorIndex];
                 NoteTextBlock.Foreground = colors[currentColorIndex];
+                _currentTextColor = colors[currentColorIndex];
             }
         }
 
@@ -164,6 +217,7 @@ namespace atc
 
         private void CloseMenuItem_Click(object sender, RoutedEventArgs e)
         {
+            _colorTimer.Stop();
             this.Close();
         }
 
@@ -173,6 +227,7 @@ namespace atc
             _timerState.BlinkStateChanged -= OnBlinkStateChanged;
             _timerState.NoteTextChanged -= OnNoteTextChanged;
             _timerState.Stop();
+            _colorTimer.Stop();
             base.OnClosed(e);
         }
     }

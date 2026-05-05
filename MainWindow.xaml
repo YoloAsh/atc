@@ -34,7 +34,7 @@
         </ContextMenu>
     </Window.ContextMenu>
 
-    <Grid Background="Transparent" Name="MainGrid">
+    <Grid Background="Black" Name="MainGrid">
         <Grid.Triggers>
             <EventTrigger RoutedEvent="MouseEnter">
                 <BeginStoryboard>
