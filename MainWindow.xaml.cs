@@ -11,7 +11,7 @@ namespace atc
         private const double SmallWidth = 140, SmallHeight = 75;
         private const double ScreenEdgeMargin = 20;
 
-        private Brush[] colors = new Brush[] { Brushes.White, Brushes.Green, Brushes.Blue, Brushes.Yellow, Brushes.Red };
+        private Brush[] colors = new Brush[] { Brushes.White, new SolidColorBrush(Color.FromRgb(0, 255, 0)), Brushes.Blue, Brushes.Yellow, Brushes.Red };
         private int currentColorIndex = 0;
 
         private double[] opacities = new double[] { 0.1, 0.25, 0.5, 0.75, 1.0 };
