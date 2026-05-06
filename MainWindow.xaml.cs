@@ -156,6 +156,11 @@ namespace atc
             settings.Show();
         }
 
+        private void ClockBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _timerState.SetMode(TimerMode.Clock, 0, 0, 0, _timerState.NoteText);
+        }
+
         private void TelegramMenuItem_Click(object sender, RoutedEventArgs e)
         {
             TelegramSetupWindow telegramSetup = new TelegramSetupWindow();

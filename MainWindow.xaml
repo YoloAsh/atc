@@ -25,6 +25,7 @@
     <Window.ContextMenu>
         <ContextMenu>
             <MenuItem Header="Settings" Click="SettingsMenuItem_Click"/>
+            <MenuItem Header="Clock" Click="ClockBtn_Click"/>
             <MenuItem Header="Smaller" Name="SizeMenuItem" Click="SizeMenuItem_Click"/>
             <MenuItem Header="Resize Grip" Name="ResizeGripMenuItem" IsCheckable="True" IsChecked="False" Click="ResizeGripMenuItem_Click"/>
             <MenuItem Header="Bold" Name="BoldMenuItem" IsCheckable="True" IsChecked="False" Click="BoldMenuItem_Click"/>
