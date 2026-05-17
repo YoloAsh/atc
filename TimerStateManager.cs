@@ -23,6 +23,9 @@ namespace atc
         private TimerMode _currentMode = TimerMode.Clock;
         public TimerMode CurrentMode => _currentMode;
         public string NoteText { get; private set; } = "";
+        public int HH { get; private set; } = 0;
+        public int MM { get; private set; } = 0;
+        public int SS { get; private set; } = 0;
 
         private string _lastTimeString = string.Empty;
         private string _lastNoteText = string.Empty;
@@ -71,6 +74,9 @@ namespace atc
         {
             _currentMode = mode;
             NoteText = note;
+            HH = hh;
+            MM = mm;
+            SS = ss;
             _isZeroState = false;
             _blinkTimer.Stop();
             _isBlinkVisible = true;

@@ -16,7 +16,7 @@ namespace atc
         private int currentColorIndex = 0;
 
         private double[] opacities = new double[] { 0.1, 0.25, 0.5, 0.75, 1.0 };
-        private int currentOpacityIndex = 2; // Default 0.5
+        private int currentOpacityIndex = 4; // Default 1
 
         private readonly TimerStateManager _timerState;
         private bool _isTimeUp = false;

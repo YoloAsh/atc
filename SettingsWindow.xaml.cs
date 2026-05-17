@@ -20,6 +20,9 @@ namespace atc
         private void LoadCurrentState()
         {
             txtNote.Text = _timerState.NoteText;
+            txtHH.Text = _timerState.HH > 0 ? _timerState.HH.ToString("D2") : "";
+            txtMM.Text = _timerState.MM > 0 ? _timerState.MM.ToString("D2") : "";
+            txtSS.Text = _timerState.SS > 0 ? _timerState.SS.ToString("D2") : "";
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -62,6 +65,7 @@ namespace atc
             }
 
             _timerState.SetMode(TimerMode.Alarm, hh, mm, ss, txtNote.Text);
+            UpdateTimeDisplay();
         }
 
         private void TimerBtn_Click(object sender, RoutedEventArgs e)
@@ -89,10 +93,22 @@ namespace atc
             {
                 // Hidden stopwatch mode
                 _timerState.SetMode(TimerMode.Stopwatch, 0, 0, 0, txtNote.Text);
+                UpdateTimeDisplay();
                 return;
             }
 
             _timerState.SetMode(TimerMode.Timer, hh, mm, ss, txtNote.Text);
+            UpdateTimeDisplay();
+        }
+
+        private void UpdateTimeDisplay()
+        {
+            int hh = ParseInput(txtHH.Text);
+            int mm = ParseInput(txtMM.Text);
+            int ss = ParseInput(txtSS.Text);
+            txtHH.Text = hh > 0 ? hh.ToString("D2") : "";
+            txtMM.Text = mm > 0 ? mm.ToString("D2") : "";
+            txtSS.Text = ss > 0 ? ss.ToString("D2") : "";
         }
 
         private void ShowError(string message)
